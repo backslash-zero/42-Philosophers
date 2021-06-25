@@ -1,6 +1,10 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-# include    "../srcs/libft.h"
+# include <string.h>
+# include <stdio.h>
+# include <unistd.h>
 
-#endif PHILOSOPHERS_H
+# include "parsing.h"
+
+#endif
