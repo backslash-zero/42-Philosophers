@@ -1,12 +1,14 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef	struct	s_philosopher
+int         parser(void);
+
+typedef	struct	            s_philosopher
 {
-	int             index;
-	int             alive;
-	t_philosopher   *next;
-}				t_philosopher;
+	int                     index;
+	int                     alive;
+	struct s_philosopher    *next;
+}				            t_philosopher;
 
 typedef	struct	s_philo
 {

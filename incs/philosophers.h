@@ -4,6 +4,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <pthread.h>
 
 # include "parsing.h"
 
