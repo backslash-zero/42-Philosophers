@@ -6,7 +6,7 @@
 #    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/27 16:34:05 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/06/27 17:25:49 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=		philosopher
 
 HEADER		=		incs/
 
-COMPILER	=		gcc
+COMPILER	=		clang
 
 FLAGS		=		-Wall -Wextra -Werror
 
@@ -29,7 +29,7 @@ SRC_NAME	=		main.c						\
 					errors/error_1.c			\
 					parsing/parsing_main.c		\
 					parsing/parsing_getargs.c	\
-					parsing/parsing_utils_1.c		\
+					parsing/parsing_utils_1.c	\
 					utils/utils_1.c				\
 
 

@@ -2,6 +2,7 @@
 # define PHILOSOPHERS_H
 
 # include <string.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
