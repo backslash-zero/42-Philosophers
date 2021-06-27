@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
+#    By: celestin <celestin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/25 18:21:27 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/06/26 17:37:00 by celestin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME		=		philosopher
 
 HEADER		=		incs/
 
-COMPILER	=		gcc #on mac, to change later
+COMPILER	=		gcc
 
 FLAGS		=		-Wall -Wextra -Werror
+
+THREADING	=		-lpthread
 
 LEAKS		=		-g3 -fsanitize=address -fsanitize=leak
 
@@ -32,10 +34,10 @@ OBJ			=		$(SRC:.c=.o)
 all: 				$(NAME)
 
 .c.o:
-					$(COMPILER) $(FLAGS) -c $< -o $@
+					$(COMPILER) $(FLAGS) $(THREADING) -c $< -o $@
 
 $(NAME):			$(OBJ)
-					$(CC) $(FLAGS) $(OBJ) -I$(HEADER) -o $(NAME) 
+					$(COMPILER) $(FLAGS) $(THREADING) $(OBJ) -I$(HEADER) -o $(NAME) 
 					@echo $(NAME) created
 
 clean:

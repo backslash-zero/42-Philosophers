@@ -1,6 +1,5 @@
 # Philosophers
 
-
 ## Problem
 Several philosophers are sitting at a round table doing one of three things: eating,
 thinking, or sleeping.
@@ -27,8 +26,9 @@ mutex for each of them.
 Each philosopher should be a thread.
 
 ## Threads
+A thread is a single sequence stream within in a process. Threads are not independent of one other like processes as a result threads shares with other threads their code section, data section and OS resources like open files and signals.
 
-
+Compiling a C program with Threads with gcc/clang: `-lpthread`
 
 ## Mutex
 
@@ -50,10 +50,16 @@ Each philosopher should be a thread.
 ### gettimeofday
 
 ### pthread_create
+Create a new thread. 
+The first argument is a pointer to thread_id which is set by this function.
+The second argument specifies attributes. If the value is NULL, then default attributes shall be used.
+The third argument is name of function to be executed for the thread to be created.
+The fourth argument is used to pass arguments to the function, myThreadFun.
 
 ### pthread_detach
 
 ### pthread_join
+The pthread_join() function for threads is the equivalent of wait() for processes. A call to pthread_join blocks the calling thread until the thread with identifier equal to the first argument terminates.
 
 ### pthread_mutex_init
 
