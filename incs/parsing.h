@@ -1,8 +1,6 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-int         parser(void);
-
 typedef	struct	            s_philosopher
 {
 	int                     index;
@@ -20,5 +18,15 @@ typedef	struct	s_philo
 	int             musteat;
     int             everyone_alive;
 }				t_philo;
+
+int         parser(t_philo philo, int av, char **ac);
+
+int         get_number(t_philo philo, char **av);
+int         get_time2die(t_philo philo, char **av);
+int         get_time2eat(t_philo philo, char **av);
+int         get_time2eat(t_philo philo, char **av);
+int         get_musteat(t_philo philo, int ac, char **av);
+
+int 		check_numerical(char *str);
 
 #endif

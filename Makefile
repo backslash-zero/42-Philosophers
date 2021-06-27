@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: celestin <celestin@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/26 17:37:00 by celestin         ###   ########.fr        #
+#    Updated: 2021/06/27 16:34:05 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,20 @@ COMPILER	=		gcc
 
 FLAGS		=		-Wall -Wextra -Werror
 
-THREADING	=		-lpthread
+THREADING	=		-pthread
 
 LEAKS		=		-g3 -fsanitize=address -fsanitize=leak
 
 SRC_PATH	=		srcs/
 
-SRC_NAME	=		main.c					\
-					parsing/parsing_main.c	\
+SRC_NAME	=		main.c						\
+					debug/debug.c				\
+					errors/error_1.c			\
+					parsing/parsing_main.c		\
+					parsing/parsing_getargs.c	\
+					parsing/parsing_utils_1.c		\
+					utils/utils_1.c				\
+
 
 SRC			=		$(addprefix $(SRC_PATH), $(SRC_NAME))
 

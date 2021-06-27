@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_utils_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/27 14:00:16 by cmeunier         ###   ########.fr       */
+/*   Created: 2021/06/27 16:00:51 by cmeunier          #+#    #+#             */
+/*   Updated: 2021/06/27 16:42:50 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/philosophers.h"
+#include "../../incs/philosophers.h"
 
-int     main(int av, char **ac)
+int 		check_numerical(char *str)
 {
-    static  t_philo philo;
+	int i;
 
-    if (parser(philo, av, ac) == -1)
-        return (1);
-    print_struct(philo);
-    return (0);
+    i = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (-1);
+	}
+	return (0);
 }

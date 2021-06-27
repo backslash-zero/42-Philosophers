@@ -25,29 +25,33 @@ mutex for each of them.
 
 Each philosopher should be a thread.
 
-## Threads
+## Concepts
+
+### Threads
 A thread is a single sequence stream within in a process. Threads are not independent of one other like processes as a result threads shares with other threads their code section, data section and OS resources like open files and signals.
 
 Compiling a C program with Threads with gcc/clang: `-lpthread`
 
-## Mutex
+## Static Variables
+Static variables have a property of preserving their value even after they are out of their scope!Hence, static variables preserve their previous value in their previous scope and are not initialized again in the new scope.
+Static variables are allocated memory in data segment, not stack segment.
 
-## Parsing
+### Mutex
+
+
+## Code struture
+### Parsing
+
+
+
 
 ## Allowed functions
-### memset
-
-### printf
-
-### malloc
-
-### free
-
-### write
 
 ### usleep
+The usleep() function suspends execution of the calling thread for (at least) usec microseconds.
 
 ### gettimeofday
+The gettimeofday() function gets the system’s clock time.
 
 ### pthread_create
 Create a new thread. 
@@ -57,6 +61,7 @@ The third argument is name of function to be executed for the thread to be creat
 The fourth argument is used to pass arguments to the function, myThreadFun.
 
 ### pthread_detach
+
 
 ### pthread_join
 The pthread_join() function for threads is the equivalent of wait() for processes. A call to pthread_join blocks the calling thread until the thread with identifier equal to the first argument terminates.
