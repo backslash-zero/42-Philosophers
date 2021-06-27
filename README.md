@@ -41,10 +41,6 @@ Static variables are allocated memory in data segment, not stack segment.
 
 ## Code struture
 ### Parsing
-
-
-
-
 ## Allowed functions
 
 ### usleep
@@ -61,15 +57,19 @@ The third argument is name of function to be executed for the thread to be creat
 The fourth argument is used to pass arguments to the function, myThreadFun.
 
 ### pthread_detach
-
+its resources are automatically released back to the system without the need for another thread to join with the terminated thread
 
 ### pthread_join
 The pthread_join() function for threads is the equivalent of wait() for processes. A call to pthread_join blocks the calling thread until the thread with identifier equal to the first argument terminates.
 
 ### pthread_mutex_init
 
+
 ### pthread_mutex_destroy
+
 
 ### pthread_mutex_lock
 
+
 ### pthread_mutex_unlock
+

@@ -3,12 +3,12 @@
 
 typedef	struct	            s_philosopher
 {
-	int                     index;
-	int                     alive;
+	int                     id;
+	t_philo					*philo;
 	struct s_philosopher    *next;
 }				            t_philosopher;
 
-typedef	struct	s_philo
+typedef	struct				s_philo
 {
 	int             number;
 	int             time2die;
@@ -17,7 +17,7 @@ typedef	struct	s_philo
     int             option;
 	int             musteat;
     int             everyone_alive;
-}				t_philo;
+}							t_philo;
 
 int         parser(t_philo *philo, int ac, char **av);
 int         get_philo(t_philo *philo, int ac, char **av);
