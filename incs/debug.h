@@ -1,6 +1,7 @@
 #ifndef DEBUG_H
 # define DEBUG_H
 
-void	print_struct(t_philo *philo);
+void	debug_print_philo(t_philo *philo);
+void	debug_print_philosopher(t_philosopher *philosopher);
 
 #endif

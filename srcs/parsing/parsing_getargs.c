@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 15:58:45 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/27 17:19:00 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/28 12:03:46 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int         get_number(t_philo *philo, char **av)
 	if (check_numerical(av[1]) == -1)
 		return (-1);
 	philo->number = ft_atoi(av[1]);
+	if (philo->number <= 0)
+		return (-1);
 	return (0);
 }
 

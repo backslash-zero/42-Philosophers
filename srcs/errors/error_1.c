@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:03:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/27 16:38:06 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/28 12:41:09 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int     ft_error(char *str)
 {
-    printf("Error: %s\n", str);
+    printf("\033[0;31mError:\033[0m %s\n", str);
     return (-1);
 }
