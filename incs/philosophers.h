@@ -8,9 +8,10 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# include "parsing.h"
 # include "debug.h"
 # include "error.h"
+# include "parsing.h"
+# include "threads.h"
 # include "utils.h"
 
 #endif

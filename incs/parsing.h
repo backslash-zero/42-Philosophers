@@ -10,12 +10,14 @@ typedef	struct				s_philo
     int             option;
 	int             musteat;
     int             everyone_alive;
+    int             everyone_alive;
 }							t_philo;
 
 typedef	struct	            s_philosopher
 {
 	int                     id;
 	t_philo					*philo;
+	pthread_t 				tid;
 	struct s_philosopher    *next;
 }				            t_philosopher;
 

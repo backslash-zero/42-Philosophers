@@ -6,7 +6,7 @@
 #    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/28 12:16:44 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/06/28 15:58:39 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ THREADING	=		-pthread
 
 LEAKS		=		-g3 -fsanitize=address -fsanitize=leak
 
+LEAKS_THRD	=		-fsanitize=thread
+
 SRC_PATH	=		srcs/
 
 SRC_NAME	=		main.c									\
@@ -31,6 +33,7 @@ SRC_NAME	=		main.c									\
 					parsing/parsing_getargs.c				\
 					parsing/parsing_main.c					\
 					parsing/parsing_utils_1.c				\
+					utils/free.c							\
 					utils/utils_1.c							\
 
 
