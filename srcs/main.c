@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/28 18:22:18 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:45:36 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int     init_struct(t_philo **philo, t_philosopher **philosopher, int ac, char *
 		return (-1);
 	if (parser(*philo, ac, av) == -1)
 		return (-1);
-	*philosopher = create_philosophers(philo);
+	*philosopher = create_philosophers(*philo);
 	if (!*philosopher)
 		return (ft_error("Memory allocation problem"));
 	return (0);

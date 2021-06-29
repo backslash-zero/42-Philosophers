@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
+#    By: celestin <celestin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/28 15:58:39 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/06/29 16:03:28 by celestin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ FLAGS		=		-Wall -Wextra -Werror
 
 THREADING	=		-pthread
 
-LEAKS		=		-g3 -fsanitize=address -fsanitize=leak
+LEAKS		=		-g3 -fsanitize=address
 
-LEAKS_THRD	=		-fsanitize=thread
+LEAKS_THRD	=		-g3 -fsanitize=thread
 
 SRC_PATH	=		srcs/
 
@@ -34,6 +34,7 @@ SRC_NAME	=		main.c									\
 					parsing/parsing_main.c					\
 					parsing/parsing_utils_1.c				\
 					utils/free.c							\
+					threading/threads.c						\
 					utils/utils_1.c							\
 
 
@@ -49,6 +50,14 @@ all: 				$(NAME)
 $(NAME):			$(OBJ)
 					$(COMPILER) $(FLAGS) $(THREADING) $(OBJ) -I$(HEADER) -o $(NAME) 
 					@echo $(NAME) created
+
+check_leaks:		$(OBJ)
+					$(COMPILER) $(FLAGS) $(THREADING) $(LEAKS) $(OBJ) -I$(HEADER) -o $(NAME) 
+					@echo $(NAME) created with fsanitize
+
+check_threads:		$(OBJ)
+					$(COMPILER) $(FLAGS) $(THREADING) $(LEAKS_THRD) $(OBJ) -I$(HEADER) -o $(NAME) 
+					@echo $(NAME) created with fsanitize checking threads
 
 clean:
 					/bin/rm -f  $(OBJ)

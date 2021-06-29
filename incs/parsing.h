@@ -10,7 +10,7 @@ typedef	struct				s_philo
     int             option;
 	int             musteat;
     int             everyone_alive;
-    int             everyone_alive;
+    int             musteat_max;
 }							t_philo;
 
 typedef	struct	            s_philosopher

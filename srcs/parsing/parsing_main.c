@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:47 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/27 17:25:31 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:44:46 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int         get_philo(t_philo *philo, int ac, char **av)
 	if (get_musteat(philo, ac, av) == -1)
 		return (ft_error("Optional arg \"number_of_times_each_philosopher_must_eat\" invalid"));
 	philo->everyone_alive = 1;
+	philo->musteat_max = 0;
 	return (0);
 }
 

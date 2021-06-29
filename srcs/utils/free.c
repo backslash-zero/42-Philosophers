@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:58:28 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/28 16:55:55 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:46:39 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-void        free_philosopher(t_philosopher *philosopher)
+static void        free_philosopher(t_philosopher *philosopher)
 {
     t_philosopher *tofree;
 
@@ -20,7 +20,7 @@ void        free_philosopher(t_philosopher *philosopher)
     free(tofree);
 }
 
-void        free_philosophers(t_philosopher *philosopher)
+static void        free_philosophers(t_philosopher *philosopher)
 {
     t_philosopher *next_philosopher;
 
