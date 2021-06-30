@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 11:25:39 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/30 14:35:25 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static void    *thread_start(void *philosopher_cast)
 	t_philosopher *philosopher;
 
 	philosopher = (t_philosopher *)philosopher_cast;
-	
-
+	printf("Before wait: id: %d\n", philosopher->id);
+	printf("Time to eat: %d\n", philosopher->settings->time2eat);
+	my_wait(philosopher->settings->time2eat);
+	printf("After wait: id: %d\n", philosopher->id);
 	return (NULL);
 }
 
@@ -37,7 +39,7 @@ static int		join_threads(t_philosopher *philosopher)
 	return (0);
 }
 
-static int		launch_threads(const t_philo *philo, t_philosopher *philosopher)
+static int		launch_threads(const t_settings *settings, t_philosopher *philosopher)
 {
 	int 			i;
 	int				ret_pthread;
@@ -45,7 +47,7 @@ static int		launch_threads(const t_philo *philo, t_philosopher *philosopher)
 	
 	i = 0;
 	tmp_philo = philosopher;
-	while (i < philo->number)
+	while (i < settings->number)
 	{
 		ret_pthread = pthread_create(&tmp_philo->tid, NULL, thread_start, (void *)tmp_philo);
 		if (ret_pthread != 0)
@@ -56,9 +58,9 @@ static int		launch_threads(const t_philo *philo, t_philosopher *philosopher)
 	return (0);
 }
 
-int     threading(t_philo *philo, t_philosopher *philosopher)
+int     threading(t_settings *settings, t_philosopher *philosopher)
 {
-	if (launch_threads(philo, philosopher) == -1)
+	if (launch_threads(settings, philosopher) == -1)
 		return (-1);
 	if (join_threads(philosopher) == -1)
 		return (-1);

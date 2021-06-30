@@ -48,6 +48,7 @@ The usleep() function suspends execution of the calling thread for (at least) us
 
 ### gettimeofday
 The gettimeofday() function gets the system’s clock time.
+The 2nd argument points to the timezone structure. It should normally be set to NULL because struct timezone is obsolete. This argument is for backwards compatibility only.
 
 ### pthread_create
 Create a new thread. 
@@ -63,13 +64,14 @@ its resources are automatically released back to the system without the need for
 The pthread_join() function for threads is the equivalent of wait() for processes. A call to pthread_join blocks the calling thread until the thread with identifier equal to the first argument terminates.
 
 ### pthread_mutex_init
-
+Creates a mutex, referenced by mutex, with attributes specified by attr. If attr is NULL, the default mutex attribute (NONRECURSIVE) is used.
+If successful, pthread_mutex_init() returns 0, and the state of the mutex becomes initialized and unlocked.
 
 ### pthread_mutex_destroy
 
 
 ### pthread_mutex_lock
-
+Locks a mutex object, which identifies a mutex.
 
 ### pthread_mutex_unlock
-
+Releases a mutex object. If one or more threads are waiting to lock the mutex

@@ -6,30 +6,33 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:14:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/06/30 12:00:39 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:16:17 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-void	printtime(long timestamp, int philo_index, char *msg)
+void	printtime(long timestamp, int philo_index, char *msg, t_settings *settings)
 {
+	pthread_mutex_lock(&settings->mutex_stdout);
 	printf("%ld %d %s\n", timestamp, philo_index, msg);
+	pthread_mutex_unlock(&settings->mutex_stdout);
 }
 
-static convert_time(long value, char *type)
+static long convert_time(long value, const char *type)
 {
-	if (type == "seconds")
+	if (!ft_strncmp(type, "seconds", ft_strlen("seconds")))
 		return (value * 1000);
-	if (type == "microseconds")
+	if (!ft_strncmp(type, "microseconds", ft_strlen("microseconds")))
 		return (value / 1000);
+	return (0);
 }
 
 long	get_time(void)
 {
 	struct timeval	current_time;
 	int 			ret_gettime;          
-	ret_gettime = gettimeofday(&current_time, DST_WET);
+	ret_gettime = gettimeofday(&current_time, NULL);
 	if (ret_gettime != 0)
 		return ((long)ft_error("Overflow occured, gettimeofday() returned nonzero."));
 	return (convert_time(current_time.tv_sec, "seconds")
@@ -41,9 +44,6 @@ void	my_wait(long time)
 	long timestamp;
 
 	timestamp = get_time();
-	if (timestamp == -1)
-		return (-1);
 	while (get_time() < timestamp + time)
 		usleep(500);
-	return (0);
 }

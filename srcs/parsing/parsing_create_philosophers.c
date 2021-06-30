@@ -6,14 +6,14 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:50:17 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/28 13:31:38 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/30 13:45:34 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
 
-t_philosopher		*create_philosophers(t_philo *philo)
+t_philosopher		*create_philosophers(t_settings *settings)
 {
 	t_philosopher   *first_philosopher;
 	t_philosopher   *philosopher;
@@ -21,14 +21,8 @@ t_philosopher		*create_philosophers(t_philo *philo)
 	int				i;
 
 	i = 0;
-	printf("Create philosophers: %d\n", philo->number);
-	while (i < philo->number)
+	while (i < settings->number)
 	{
-		printf("Create philosopher %d\n", i);
-		printf("\n");
-		printf("\n");
-		printf("\n");
-		printf("\n");
 		if (!(philosopher = malloc(sizeof(t_philosopher))))
 			return (NULL);
 		if (i != 0)
@@ -36,7 +30,7 @@ t_philosopher		*create_philosophers(t_philo *philo)
 		else
 			first_philosopher = philosopher;
 		philosopher->id = i + 1;
-		philosopher->philo = philo;
+		philosopher->settings = settings;
 		philosopher->next = NULL;
 		last_philosopher = philosopher;
 		i++;
