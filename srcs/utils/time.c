@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:14:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/06/29 18:53:14 by celestin         ###   ########.fr       */
+/*   Updated: 2021/06/30 12:00:39 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
+
+void	printtime(long timestamp, int philo_index, char *msg)
+{
+	printf("%ld %d %s\n", timestamp, philo_index, msg);
+}
 
 static convert_time(long value, char *type)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/29 15:45:36 by celestin         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:11:56 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philosophers.h"
 
-int     init_struct(t_philo **philo, t_philosopher **philosopher, int ac, char **av)
+static int     init_struct(t_philo **philo, t_philosopher **philosopher, int ac, char **av)
 {
 	*philo = malloc(sizeof(t_philo));
 	if (!*philo)

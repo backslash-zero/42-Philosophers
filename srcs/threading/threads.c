@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/29 16:12:09 by celestin         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:25:39 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-void    *thread_start(void *philosopher_cast)
+static void    *thread_start(void *philosopher_cast)
 {
 	t_philosopher *philosopher;
 
 	philosopher = (t_philosopher *)philosopher_cast;
-	debug_print_philosopher(philosopher);
-	debug_print_philosopher(philosopher);
-	debug_print_philosopher(philosopher);
+	
+
 	return (NULL);
 }
 

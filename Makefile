@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: celestin <celestin@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/29 16:03:28 by celestin         ###   ########.fr        #
+#    Updated: 2021/06/30 11:11:24 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,9 @@ SRC_NAME	=		main.c									\
 					parsing/parsing_getargs.c				\
 					parsing/parsing_main.c					\
 					parsing/parsing_utils_1.c				\
-					utils/free.c							\
 					threading/threads.c						\
+					utils/free.c							\
+					utils/time.c							\
 					utils/utils_1.c							\
 
 
