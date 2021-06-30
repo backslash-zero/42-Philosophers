@@ -6,7 +6,7 @@
 #    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/06/30 11:11:24 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/06/30 22:07:14 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRC_NAME	=		main.c									\
 					parsing/parsing_getargs.c				\
 					parsing/parsing_main.c					\
 					parsing/parsing_utils_1.c				\
+					threading/philo_actions.c				\
+					threading/philo_algo_1.c				\
 					threading/threads.c						\
 					utils/free.c							\
 					utils/time.c							\

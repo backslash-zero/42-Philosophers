@@ -68,7 +68,7 @@ Creates a mutex, referenced by mutex, with attributes specified by attr. If attr
 If successful, pthread_mutex_init() returns 0, and the state of the mutex becomes initialized and unlocked.
 
 ### pthread_mutex_destroy
-
+Destroy mutex
 
 ### pthread_mutex_lock
 Locks a mutex object, which identifies a mutex.

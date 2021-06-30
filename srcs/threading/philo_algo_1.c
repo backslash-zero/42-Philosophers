@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   problem.c                                          :+:      :+:    :+:   */
+/*   philo_algo_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 21:21:24 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/06/30 22:06:38 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static int         philosophing_conditions(t_philosopher *philosopher)
+int         philosophing_conditions(t_philosopher *philosopher)
 {
     pthread_mutex_lock(&philosopher->settings->mutex_alive);
     if (philosopher->settings->everyone_alive == 0)

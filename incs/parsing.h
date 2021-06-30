@@ -21,6 +21,7 @@ typedef	struct	            s_philosopher
 {
 	int						id;
 	pthread_t				tid;
+	long					lastmeal;
 	t_settings				*settings;
 	struct s_philosopher	*next;
 	pthread_mutex_t			*fork_left;
