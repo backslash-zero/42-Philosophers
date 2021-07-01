@@ -8,6 +8,8 @@ While eating, they are not thinking or sleeping, while sleeping, they are not ea
 
 The philosophers sit at a circular table with a large bowl of spaghetti in the center. There are some forks on the table. As spaghetti is difficult to serve and eat with a single fork, it is assumed that a philosopher must eat with two forks, one for each hand.
 
+![](https://github.com/backslash-zero/Philosophers/blob/main/Philosopher-Illustration.png)
+
 The philosophers must never be starving. Every philosopher needs to eat.
 
 Philosophers don’t speak with each other. Philosophers don’t know when another philosopher is about to die.
