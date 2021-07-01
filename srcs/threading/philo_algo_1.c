@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_algo_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 22:06:38 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/01 16:23:27 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int         philosophing_conditions(t_philosopher *philosopher)
 
 void        philosophing(t_philosopher *philosopher)
 {
+    if (is_even(philosopher->id))
+        usleep(300);
     while (philosophing_conditions(philosopher))
     {
+        printf("Run of philsophing while loop thread: %d\n", philosopher->id);
         philosopher_eat(philosopher);
         philosopher_sleep(philosopher);
         philosopher_think(philosopher);

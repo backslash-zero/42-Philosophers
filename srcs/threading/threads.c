@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 14:35:25 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/01 16:22:13 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static void    *thread_start(void *philosopher_cast)
 	t_philosopher *philosopher;
 
 	philosopher = (t_philosopher *)philosopher_cast;
-	printf("Before wait: id: %d\n", philosopher->id);
-	printf("Time to eat: %d\n", philosopher->settings->time2eat);
-	my_wait(philosopher->settings->time2eat);
-	printf("After wait: id: %d\n", philosopher->id);
+	printf("Start of the thread%d\n", philosopher->id);
+	philosophing(philosopher);
 	return (NULL);
 }
 

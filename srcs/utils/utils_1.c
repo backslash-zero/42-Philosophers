@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:37:04 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 14:20:00 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/01 15:27:56 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
+
+int		is_even(const int nb)
+{
+	if (nb % 2 == 0)
+		return (1);
+	return (0);
+}
 
 int		ft_strlen(char *str)
 {

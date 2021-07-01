@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   philo_actions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 22:31:45 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/01 16:29:56 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
+
+void	drop_forks(t_philosopher *philosopher)
+{
+	printf("Dropping forks\n");
+	pthread_mutex_unlock(philosopher->fork_left);
+	pthread_mutex_unlock(philosopher->fork_right);
+	printf("Forks dropped\n");
+}
+
+void	pickup_forks(t_philosopher *philosopher)
+{
+	printf("Picking up forks\n");
+	pthread_mutex_lock(philosopher->fork_left);
+	pthread_mutex_lock(philosopher->fork_right);
+	printf("Forks pickd up\n");
+}
 
 void	philosopher_dies(t_philosopher *philosopher)
 {
@@ -27,12 +43,14 @@ void	philosopher_eat(t_philosopher *philosopher)
 {
 	long	timestamp;
 	
+	pickup_forks(philosopher);
 	timestamp = get_time();
 	if (philosophing_conditions(philosopher))
 	{
 		printtime(timestamp, philosopher->id, "is eating", philosopher->settings);
 		my_wait(philosopher->settings->time2eat);
 		philosopher->lastmeal = timestamp + (philosopher->settings->time2eat);
+		drop_forks(philosopher);
 	}
 }
 
