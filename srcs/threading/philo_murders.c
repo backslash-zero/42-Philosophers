@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   philo_murders.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/06 12:41:31 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:20:57 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-// Check if Philos are alive
-// create thread that continuously check if everyone alive
-
-
-// add check for max meals (used on the same thread, no mutex)
-
-// add mutex on "lastmeal" read/write
-
 static int     check_starve(t_philosopher *philosopher)
 {
+	pthread_mutex_lock(&philosopher->mutex_lastmeal);
 	if (get_time() - philosopher->lastmeal >= philosopher->settings->time2die)
+	{
+		pthread_mutex_unlock(&philosopher->mutex_lastmeal);
 		return (1);
+	}
+	pthread_mutex_unlock(&philosopher->mutex_lastmeal);
 	return (0);
 }
 
@@ -67,4 +64,5 @@ int		launch_liveliness_check(t_philosopher *philosopher)
 	ret_pthread = pthread_create(&tmp_philo->settings->tid_liveness_checker, NULL, thread_liveliness_start, (void *)tmp_philo);
 	if (ret_pthread != 0)
 		return (ft_error("Unable to create thread, see launch_thread function."));
+	return (0);
 }

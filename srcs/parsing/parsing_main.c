@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:47 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 12:48:42 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:18:22 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
-
 
 static int 	init_othermutexes(t_settings *settings)
 {
@@ -21,31 +20,6 @@ static int 	init_othermutexes(t_settings *settings)
 		return (ft_error("Mutex init has failed"));
 	if (pthread_mutex_init(&settings->mutex_stdout, NULL) != 0)
 		return (ft_error("Mutex init has failed"));
-	return (0);
-}
-static int 	init_forks(t_settings *settings)
-{
-	pthread_mutex_t *forks;
-	int				i;
-
-	forks = malloc(sizeof(pthread_mutex_t) * settings->number);
-	if (forks == NULL)
-		return (ft_error("Memory allocation problem"));
-	i = 0;
-	while (i < settings->number)
-	{
-		if (pthread_mutex_init(&forks[i], NULL) != 0)
-			return (ft_error("Mutex init has failed"));
-		i++;
-	}
-	settings->forks = forks;
-	return (0);
-}
-
-static int 	get_forks(t_settings *settings)
-{
-	if (init_forks(settings) == -1)
-		return (-1);
 	return (0);
 }
 

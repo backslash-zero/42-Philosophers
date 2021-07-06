@@ -31,6 +31,8 @@ typedef	struct	            s_philosopher
 	pthread_mutex_t			*fork_right;
 }							t_philosopher;
 
+int			 	get_forks(t_settings *settings);
+
 t_philosopher	*create_philosophers(t_settings *settings);
 
 int				get_number(t_settings *settings, char **av);
