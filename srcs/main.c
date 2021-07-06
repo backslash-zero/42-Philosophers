@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 15:26:00 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:18:40 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ static int     init_struct(t_settings **settings, t_philosopher **philosopher, i
 	assign_forks(*settings, *philosopher);
 	return (0);
 }
+
 // case with one philo
+
 int     main(int ac, char **av)
 {
 	static  t_settings *settings;
@@ -50,6 +52,7 @@ int     main(int ac, char **av)
 
 	if (init_struct(&settings, &philosopher, ac, av) == -1)
 		return (1);
+	debug_print_settings(settings);
 	if (threading(settings, philosopher) == -1)
 		return (1);
 	free_all(settings, philosopher);

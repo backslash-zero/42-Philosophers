@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 15:20:21 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:03:17 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	drop_forks(t_philosopher *philosopher)
 {
-	printf("Dropping forks\n");
+	printf("Philo-%d: Dropping forks\n", philosopher->id);
 	pthread_mutex_unlock(philosopher->fork_left);
 	pthread_mutex_unlock(philosopher->fork_right);
-	printf("Forks dropped\n");
+	printf("Philo-%d: Forks dropped\n", philosopher->id);
 }
 
 void	pickup_forks(t_philosopher *philosopher)
 {
-	printf("Picking up forks\n");
+	printf("Philo-%d: Picking up forks\n", philosopher->id);
 	pthread_mutex_lock(philosopher->fork_left);
 	pthread_mutex_lock(philosopher->fork_right);
-	printf("Forks pickd up\n");
+	printf("Philo-%d: Forks pickd up\n", philosopher->id);
 }
 
 void	philosopher_dies(t_philosopher *philosopher)
@@ -39,18 +39,13 @@ void	philosopher_dies(t_philosopher *philosopher)
 	}
 }
 
-void	philosopher_eating_update(t_philosopher *philosopher, long timestamp)
+void	philosopher_update_lastmeal(t_philosopher *philosopher, double timestamp)
 {
-	philosopher->meals += 1;
+	printf("Philo-%d: updating last meal\n", philosopher->id);
 	pthread_mutex_lock(&philosopher->mutex_lastmeal);
 	philosopher->lastmeal = timestamp;
 	pthread_mutex_unlock(&philosopher->mutex_lastmeal);
-	if (philosopher->meals >= philosopher->settings->musteat)
-	{
-		pthread_mutex_lock(&philosopher->settings->mutex_musteat);
-		philosopher->settings->musteat_max = 1;
-		pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
-	}
+	printf("Philo-%d: updated last meal\n", philosopher->id);
 }
 
 void	philosopher_eat(t_philosopher *philosopher)
@@ -58,18 +53,22 @@ void	philosopher_eat(t_philosopher *philosopher)
 	long	timestamp;
 	
 	pickup_forks(philosopher);
-
-	// use mutex lock for lastmeal!
 	timestamp = get_time();
-	philosopher_eating_update(philosopher, timestamp);
+	philosopher_update_lastmeal(philosopher, timestamp);
 	if (philosophing_conditions(philosopher))
 	{
+		printf("Philo-%d: ready to eat\n", philosopher->id);
 		printtime(timestamp, philosopher->id, "is eating", philosopher->settings);
 		my_wait(philosopher->settings->time2eat);
 		drop_forks(philosopher);
-		pthread_mutex_lock(&philosopher->mutex_lastmeal);
-		philosopher->lastmeal = timestamp + (philosopher->settings->time2eat);
-		pthread_mutex_unlock(&philosopher->mutex_lastmeal);
+		philosopher_update_lastmeal(philosopher, timestamp + philosopher->settings->time2eat);
+		philosopher->meals += 1;
+		if (philosopher->meals >= philosopher->settings->musteat && philosopher->settings->option == 1)
+		{
+			pthread_mutex_lock(&philosopher->settings->mutex_musteat);
+			philosopher->settings->musteat_max = 1;
+			pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
+		}
 	}
 }
 

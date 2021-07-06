@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 11:49:58 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:04:14 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ static void    *thread_start(void *philosopher_cast)
 	t_philosopher *philosopher;
 
 	philosopher = (t_philosopher *)philosopher_cast;
-	printf("Start of the thread%d\n", philosopher->id);
+	printf("\033[0;36m");
+	printf("Start of the thread:	%d\n", philosopher->id);
+	printf("\033[0m");
+	debug_print_philosopher(philosopher);
 	philosophing(philosopher);
+	printf("End of the thread:	%d\n", philosopher->id);
 	return (NULL);
 }
 
