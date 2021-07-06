@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 18:48:06 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:58:45 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void        philosophing(t_philosopher *philosopher)
         usleep(300);
     while (philosophing_conditions(philosopher))
     {
-        printf("Run of philsophing while loop thread: %d\n", philosopher->id);
         philosopher_eat(philosopher);
         philosopher_sleep(philosopher);
         philosopher_think(philosopher);

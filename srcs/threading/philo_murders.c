@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/06 18:46:45 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:00:01 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ static int     check_starve(t_philosopher *philosopher)
 	pthread_mutex_lock(&philosopher->mutex_lastmeal);
 	if ((long)get_time() - philosopher->lastmeal >= (long)philosopher->settings->time2die)
 	{
-		printf("lastmeal = %ld\n", philosopher->lastmeal);
-		printf("(double)get_time() - (double)philosopher->lastmeal = %ld\n", (long)get_time() - philosopher->lastmeal);
-		printf("philosopher->settings->time2die = %ld\n", (long)philosopher->settings->time2die);
 		pthread_mutex_unlock(&philosopher->mutex_lastmeal);
 		return (1);
 	}
@@ -36,7 +33,6 @@ static int     check_death(t_philosopher *philosopher)
 	{
 		if (check_starve(tmp) == 1)
 		{
-			printf("!Philo-%d is starving\n", tmp->id);
 			philosopher->settings->everyone_alive = 0;
 			return (1);
 		}
@@ -49,15 +45,12 @@ static void    *thread_liveliness_start(void *philosopher_cast)
 {
 	t_philosopher *philosopher;
 
-	debug_message("Launched livelinesss thread");
 	philosopher = (t_philosopher *)philosopher_cast;
 	while (philosophing_conditions(philosopher))
 	{
 		usleep(500);
 		check_death(philosopher);
 	}
-	debug_message("Exited livelinesss thread");
-	printf("Everyone alive; %d\nmusteat_max; %d\n",philosopher->settings->everyone_alive, philosopher->settings->musteat_max);
 	return (NULL);
 }
 
