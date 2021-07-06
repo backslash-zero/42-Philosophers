@@ -1,4 +1,5 @@
 # Philosophers
+![](https://github.com/backslash-zero/Philosophers/blob/main/Philosopher-Illustration.png)
 
 ## Problem
 Several philosophers are sitting at a round table doing one of three things: eating,
