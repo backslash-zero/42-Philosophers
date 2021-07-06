@@ -6,7 +6,7 @@
 /*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/02 00:55:36 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:45:21 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int     init_struct(t_settings **settings, t_philosopher **philosopher, i
 		return (-1);
 	*philosopher = create_philosophers(*settings);
 	if (!*philosopher)
-		return (ft_error("Memory allocation problem"));
+		return (ft_error("Problem creating philosophers :("));
 	assign_forks(*settings, *philosopher);
 	return (0);
 }

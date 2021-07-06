@@ -6,7 +6,7 @@
 /*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/01 16:22:13 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 11:49:58 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static int		join_threads(t_philosopher *philosopher)
 			return (ft_error("There was a problem joining a thread."));
 		tmp = tmp->next;
 	}
+	ret_join = pthread_join(philosopher->settings->tid_liveness_checker, NULL);
+	if (ret_join != 0)
+		return (ft_error("There was a problem joining a thread."));
 	return (0);
 }
 
@@ -59,6 +62,8 @@ static int		launch_threads(const t_settings *settings, t_philosopher *philosophe
 int     threading(t_settings *settings, t_philosopher *philosopher)
 {
 	if (launch_threads(settings, philosopher) == -1)
+		return (-1);
+	if (launch_liveliness_check(philosopher) == -1)
 		return (-1);
 	if (join_threads(philosopher) == -1)
 		return (-1);

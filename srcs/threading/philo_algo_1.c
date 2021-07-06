@@ -6,7 +6,7 @@
 /*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/01 16:23:27 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:48:45 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int         philosophing_conditions(t_philosopher *philosopher)
     if (philosopher->settings->musteat_max == 1)
         return (0);
     pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
-    // and lock mutex on std output
     return (1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:58:28 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 20:56:52 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:41:00 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void        free_philosopher(t_philosopher *philosopher)
 	t_philosopher *tofree;
 
 	tofree = philosopher;
+	pthread_mutex_destroy(&tofree->mutex_lastmeal);
 	free(tofree);
 }
 

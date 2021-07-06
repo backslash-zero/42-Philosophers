@@ -1,2 +1,4 @@
 philosopher
 *.o
+*.jpg
+*.png

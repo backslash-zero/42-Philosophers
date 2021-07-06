@@ -4,6 +4,7 @@
 typedef	struct				s_settings
 {
 	int						number;
+	pthread_t				tid_liveness_checker;
 	int						time2die;
 	int						time2eat;
 	int						time2sleep;
@@ -22,6 +23,8 @@ typedef	struct	            s_philosopher
 	int						id;
 	pthread_t				tid;
 	long					lastmeal;
+	pthread_mutex_t			mutex_lastmeal;
+	int						meals;
 	t_settings				*settings;
 	struct s_philosopher	*next;
 	pthread_mutex_t			*fork_left;

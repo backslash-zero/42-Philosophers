@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_create_philosophers.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:50:17 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 13:45:34 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:44:32 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ t_philosopher		*create_philosophers(t_settings *settings)
 	while (i < settings->number)
 	{
 		if (!(philosopher = malloc(sizeof(t_philosopher))))
-			return (NULL);
+			return ((t_philosopher *)ft_error_null("Malloc has failed"));
 		if (i != 0)
 			last_philosopher->next = philosopher;
 		else
 			first_philosopher = philosopher;
 		philosopher->id = i + 1;
+		philosopher->meals = 0;
 		philosopher->settings = settings;
+		if (pthread_mutex_init(&philosopher->mutex_lastmeal, NULL) != 0)
+			return ((t_philosopher *)ft_error_null("Mutex init has failed"));
 		philosopher->next = NULL;
 		last_philosopher = philosopher;
 		i++;
