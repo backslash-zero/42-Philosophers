@@ -2,6 +2,10 @@
 # define UTILS_H
 
 void	free_all(t_settings *settings, t_philosopher *philosopher);
+void	free_forks(t_settings *settings);
+
+void	destroy_mutexes(t_settings *settings);
+void	destroy_fork_mutexes(t_settings *settings, int n);
 
 void	printtime(long time, int index, char *msg, t_settings *settings);
 void	my_wait(long time);

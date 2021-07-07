@@ -6,20 +6,28 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 19:59:30 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 20:03:07 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:35:30 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-int	free_settings_only(t_settings *settings)
+void	destroy_fork_mutexes(t_settings *settings, int n)
 {
-	free(settings);
-	return (-1);
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		pthread_mutex_destroy(&settings->forks[i]);
+		i++;
+	}
 }
 
-int	free_settings_only(t_settings *settings)
+void	destroy_mutexes(t_settings *settings)
 {
-	free(settings);
-	return (-1);
+	destroy_fork_mutexes(settings, settings->number);
+	pthread_mutex_destroy(&settings->mutex_alive);
+	pthread_mutex_destroy(&settings->mutex_musteat);
+	pthread_mutex_destroy(&settings->mutex_stdout);
 }

@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:58:28 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 20:27:32 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:35:28 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-void	destroy_fork_mutexes(t_settings *settings, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		pthread_mutex_destroy(&settings->forks[i]);
-		i++;
-	}
-}
-
-static void	destroy_mutexes(t_settings *settings)
-{
-	destroy_fork_mutexes(settings, settings->number);
-	pthread_mutex_destroy(&settings->mutex_alive);
-	pthread_mutex_destroy(&settings->mutex_musteat);
-	pthread_mutex_destroy(&settings->mutex_stdout);
-}
-
-static void	free_forks(t_settings *settings)
+void	free_forks(t_settings *settings)
 {
 	pthread_mutex_t	*tofree;
 

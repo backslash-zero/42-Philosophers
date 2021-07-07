@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:37:04 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 17:39:13 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:39:03 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	if (isneg)
-		return (-value);
-	else
 		return (value);
+	else
+		return (-value);
 }
