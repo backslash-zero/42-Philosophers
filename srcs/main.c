@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 18:00:31 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:27:13 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,18 @@ static int	init_struct(t_settings **s, t_philosopher **phil, int ac, char **av)
 	if (!*s)
 		return (-1);
 	if (parser(*s, ac, av) == -1)
+	{
+		free(*s);
 		return (-1);
+	}
 	*phil = create_philosophers(*s);
 	if (!*phil)
+	{
+		destroy_mutexes(*s);
+		free_forks(*s);
+		free(*s);
 		return (ft_error("Problem creating philosophers :("));
+	}
 	assign_forks(*s, *phil);
 	return (0);
 }
@@ -50,7 +58,10 @@ int	main(int ac, char **av)
 	if (init_struct(&settings, &philosopher, ac, av) == -1)
 		return (1);
 	if (threading(settings, philosopher) == -1)
+	{	
 		return (1);
+		free_all(settings, philosopher);
+	}
 	free_all(settings, philosopher);
 	return (0);
 }

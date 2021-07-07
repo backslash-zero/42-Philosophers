@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:17:35 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 18:35:00 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:19:50 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ static int	init_forks(t_settings *settings)
 
 int	get_forks(t_settings *settings)
 {
-	if (init_forks(settings) == -1)
+	int ret;
+	
+	ret = init_forks(settings);
+	if (ret != 0)
+	{
+		destroy_fork_mutexes(settings, ret);
 		return (-1);
+	}
 	return (0);
 }
