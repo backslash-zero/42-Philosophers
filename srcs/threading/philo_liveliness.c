@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_murders.c                                    :+:      :+:    :+:   */
+/*   philo_liveliness.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/06 19:00:01 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:50:35 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
+
+static int     check_musteat(t_philosopher *philosopher)
+{
+	t_philosopher   *tmp;
+
+	tmp = philosopher;
+	while (tmp)
+	{
+		if (tmp->meals < tmp->settings->musteat)
+			return (0);
+		tmp = tmp->next;
+	}
+	pthread_mutex_lock(&philosopher->settings->mutex_musteat);
+	philosopher->settings->musteat_max = 1;
+	pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
+	return (1);
+}
 
 static int     check_starve(t_philosopher *philosopher)
 {
@@ -24,7 +41,7 @@ static int     check_starve(t_philosopher *philosopher)
 	return (0);
 }
 
-static int     check_death(t_philosopher *philosopher)
+static void     check_death(t_philosopher *philosopher)
 {
 	t_philosopher   *tmp;
 
@@ -34,11 +51,10 @@ static int     check_death(t_philosopher *philosopher)
 		if (check_starve(tmp) == 1)
 		{
 			philosopher->settings->everyone_alive = 0;
-			return (1);
+			printtime(get_time(), philosopher->id, "died", philosopher->settings);
 		}
 		tmp = tmp->next;
 	}
-	return (0);
 }
 
 static void    *thread_liveliness_start(void *philosopher_cast)
@@ -50,6 +66,8 @@ static void    *thread_liveliness_start(void *philosopher_cast)
 	{
 		usleep(500);
 		check_death(philosopher);
+		if (philosopher->settings->option)
+			check_musteat(philosopher);
 	}
 	return (NULL);
 }

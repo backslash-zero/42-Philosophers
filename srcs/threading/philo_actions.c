@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 19:01:08 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:45:34 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,9 @@ void	philosopher_eat(t_philosopher *philosopher)
 		drop_forks(philosopher);
 		philosopher_update_lastmeal(philosopher, timestamp + philosopher->settings->time2eat);
 		philosopher->meals += 1;
-		if (philosopher->meals >= philosopher->settings->musteat && philosopher->settings->option == 1)
-		{
-			pthread_mutex_lock(&philosopher->settings->mutex_musteat);
-			philosopher->settings->musteat_max = 1;
-			pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
-		}
 	}
+	else
+		drop_forks(philosopher);
 }
 
 void	philosopher_sleep(t_philosopher *philosopher)

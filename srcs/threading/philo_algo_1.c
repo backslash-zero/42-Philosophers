@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 18:58:45 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:48:27 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int         philosophing_conditions(t_philosopher *philosopher)
     pthread_mutex_lock(&philosopher->settings->mutex_musteat);
     if (philosopher->settings->musteat_max == 1)
     {
-        printf("Philo-%d musteat failed!\n", philosopher->id);
+        printf("Philo-%d musteat failed!: ate %d times\n", philosopher->id, philosopher->meals);
         pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
         return (0);
     }

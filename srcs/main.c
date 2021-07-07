@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 18:18:40 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 11:54:23 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int     init_struct(t_settings **settings, t_philosopher **philosopher, i
 }
 
 // case with one philo
+
+// when everyone has eaten
 
 int     main(int ac, char **av)
 {
