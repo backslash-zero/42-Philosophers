@@ -6,22 +6,27 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:58:28 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 17:31:43 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:27:32 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static void	destroy_mutexes(t_settings *settings)
+void	destroy_fork_mutexes(t_settings *settings, int n)
 {
 	int	i;
 
 	i = 0;
-	while (i < settings->number)
+	while (i < n)
 	{
 		pthread_mutex_destroy(&settings->forks[i]);
 		i++;
 	}
+}
+
+static void	destroy_mutexes(t_settings *settings)
+{
+	destroy_fork_mutexes(settings, settings->number);
 	pthread_mutex_destroy(&settings->mutex_alive);
 	pthread_mutex_destroy(&settings->mutex_musteat);
 	pthread_mutex_destroy(&settings->mutex_stdout);
