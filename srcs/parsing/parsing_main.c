@@ -6,13 +6,13 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:47 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 15:18:22 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:32:24 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static int 	init_othermutexes(t_settings *settings)
+static int	init_othermutexes(t_settings *settings)
 {
 	if (pthread_mutex_init(&settings->mutex_alive, NULL) != 0)
 		return (ft_error("Mutex init has failed"));
@@ -23,7 +23,7 @@ static int 	init_othermutexes(t_settings *settings)
 	return (0);
 }
 
-static	int			get_philo(t_settings *settings, int ac, char **av)
+static	int	get_philo(t_settings *settings, int ac, char **av)
 {
 	if (get_number(settings, av) == -1)
 		return (ft_error("arg \"number_of_philosophers\" invalid"));
@@ -34,20 +34,20 @@ static	int			get_philo(t_settings *settings, int ac, char **av)
 	if (get_time2sleep(settings, av) == -1)
 		return (ft_error("arg \"time_to_sleep\" invalid"));
 	if (get_musteat(settings, ac, av) == -1)
-		return (ft_error("Optional arg \"number_of_times_each_philosopher_must_eat\" invalid"));
+		return (ft_error("Optional arg invalid"));
 	settings->everyone_alive = 1;
 	settings->musteat_max = 0;
 	return (0);
 }
 
-static int         check_ac(int ac)
+static int	check_ac(int ac)
 {
 	if (ac != 5 && ac != 6)
 		return (ft_error("Wrong number of arguments"));
 	return (0);
 }
 
-int         parser(t_settings *settings, int ac, char **av)
+int	parser(t_settings *settings, int ac, char **av)
 {
 	if (check_ac(ac) == -1)
 		return (-1);

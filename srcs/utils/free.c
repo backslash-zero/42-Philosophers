@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:58:28 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 12:41:00 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:31:43 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static void        destroy_mutexes(t_settings *settings)
+static void	destroy_mutexes(t_settings *settings)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < settings->number)
@@ -27,8 +27,7 @@ static void        destroy_mutexes(t_settings *settings)
 	pthread_mutex_destroy(&settings->mutex_stdout);
 }
 
-
-static void        free_forks(t_settings *settings)
+static void	free_forks(t_settings *settings)
 {
 	pthread_mutex_t	*tofree;
 
@@ -36,21 +35,21 @@ static void        free_forks(t_settings *settings)
 	free(tofree);
 }
 
-static void        free_philosopher(t_philosopher *philosopher)
+static void	free_philosopher(t_philosopher *philosopher)
 {
-	t_philosopher *tofree;
+	t_philosopher	*tofree;
 
 	tofree = philosopher;
 	pthread_mutex_destroy(&tofree->mutex_lastmeal);
 	free(tofree);
 }
 
-static void        free_philosophers(t_philosopher *philosopher)
+static void	free_philosophers(t_philosopher *philosopher)
 {
-	t_philosopher *next_philosopher;
+	t_philosopher	*next_philosopher;
 
 	next_philosopher = philosopher;
-	while(philosopher)
+	while (philosopher)
 	{
 		next_philosopher = philosopher->next;
 		free_philosopher(philosopher);
@@ -58,7 +57,7 @@ static void        free_philosophers(t_philosopher *philosopher)
 	}
 }
 
-void        free_all(t_settings *settings, t_philosopher *philosopher)
+void	free_all(t_settings *settings, t_philosopher *philosopher)
 {
 	destroy_mutexes(settings);
 	free_forks(settings);

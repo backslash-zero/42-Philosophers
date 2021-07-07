@@ -6,7 +6,7 @@
 #    By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/07/07 13:36:26 by cmeunier         ###   ########.fr        #
+#    Updated: 2021/07/07 18:24:16 by cmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_NAME	=		main.c									\
 					parsing/parsing_utils_1.c				\
 					threading/philo_actions.c				\
 					threading/philo_algo_1.c				\
+					threading/philo_forks.c					\
 					threading/philo_liveliness.c			\
 					threading/threads.c						\
 					utils/free.c							\

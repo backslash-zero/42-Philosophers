@@ -8,11 +8,14 @@ void	philosopher_eat(t_philosopher *philosopher);
 void	philosopher_sleep(t_philosopher *philosopher);
 void	philosopher_think(t_philosopher *philosopher);
 
-int     philosophing_conditions(t_philosopher *philosopher);
-void    philosophing(t_philosopher *philosopher);
+int		philosophing_conditions(t_philosopher *philosopher);
+void	philosophing(t_philosopher *philosopher);
+
+void	drop_forks(t_philosopher *philosopher);
+void	pickup_forks(t_philosopher *philosopher);
 
 int		launch_liveliness_check(t_philosopher *philosopher);
 
-int     threading(t_settings *settings, t_philosopher *philosopher);
+int		threading(t_settings *settings, t_philosopher *philosopher);
 
 #endif

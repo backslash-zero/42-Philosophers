@@ -6,15 +6,15 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:17:35 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 15:21:53 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:35:00 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static int 	init_forks(t_settings *settings)
+static int	init_forks(t_settings *settings)
 {
-	pthread_mutex_t *forks;
+	pthread_mutex_t	*forks;
 	int				i;
 
 	forks = malloc(sizeof(pthread_mutex_t) * settings->number);
@@ -31,7 +31,7 @@ static int 	init_forks(t_settings *settings)
 	return (0);
 }
 
-int 	get_forks(t_settings *settings)
+int	get_forks(t_settings *settings)
 {
 	if (init_forks(settings) == -1)
 		return (-1);

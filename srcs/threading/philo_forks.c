@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils_1.c                                  :+:      :+:    :+:   */
+/*   philo_forks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/27 16:00:51 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 18:31:29 by cmeunier         ###   ########.fr       */
+/*   Created: 2021/07/07 18:23:38 by cmeunier          #+#    #+#             */
+/*   Updated: 2021/07/07 18:23:57 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-int	check_numerical(char *str)
+void	drop_forks(t_philosopher *philosopher)
 {
-	int	i;
+	pthread_mutex_unlock(philosopher->fork_left);
+	pthread_mutex_unlock(philosopher->fork_right);
+}
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (-1);
-	}
-	return (0);
+void	pickup_forks(t_philosopher *philosopher)
+{
+	pthread_mutex_lock(philosopher->fork_left);
+	pthread_mutex_lock(philosopher->fork_right);
 }

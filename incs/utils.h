@@ -3,7 +3,7 @@
 
 void	free_all(t_settings *settings, t_philosopher *philosopher);
 
-void	printtime(long timestamp, int philo_index, char *msg, t_settings *settings);
+void	printtime(long time, int index, char *msg, t_settings *settings);
 void	my_wait(long time);
 long	get_time(void);
 

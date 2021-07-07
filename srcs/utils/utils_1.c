@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:37:04 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/01 15:27:56 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:39:13 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-int		is_even(const int nb)
+int	is_even(const int nb)
 {
 	if (nb % 2 == 0)
 		return (1);
 	return (0);
 }
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 		i++;
-	return(i);
+	return (i);
 }
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
@@ -41,10 +41,10 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int value;
-	int isneg;
+	int	value;
+	int	isneg;
 
 	value = 0;
 	isneg = 0;
@@ -53,7 +53,8 @@ int		ft_atoi(const char *str)
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-		isneg = (*str == '-' ? 1 : 0);
+		if (*str == '-' )
+			isneg = 1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
@@ -62,5 +63,8 @@ int		ft_atoi(const char *str)
 		value += 48 - *str;
 		str++;
 	}
-	return (isneg ? value : -value);
+	if (isneg)
+		return (-value);
+	else
+		return (value);
 }

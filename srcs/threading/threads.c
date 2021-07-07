@@ -6,31 +6,27 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:00:56 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 14:34:39 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:05:06 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-static void    *thread_start(void *philosopher_cast)
+static void	*thread_start(void *philosopher_cast)
 {
-	t_philosopher *philosopher;
+	t_philosopher	*philosopher;
 
 	philosopher = (t_philosopher *)philosopher_cast;
-	// printf("\033[0;36m");
-	// printf("Start of the thread:	%d\n", philosopher->id);
-	// printf("\033[0m");
-	// debug_print_philosopher(philosopher);
 	philosophing(philosopher);
-	// printf("End of the thread:	%d\n", philosopher->id);
 	return (NULL);
 }
 
-static int		join_threads(t_philosopher *philosopher)
+static int	join_threads(t_philosopher *philosopher)
 {
-	t_philosopher *tmp = philosopher;
-	int	ret_join;
+	t_philosopher	*tmp;
+	int				ret_join;
 
+	tmp = philosopher;
 	while (tmp)
 	{
 		ret_join = pthread_join(tmp->tid, NULL);
@@ -44,26 +40,26 @@ static int		join_threads(t_philosopher *philosopher)
 	return (0);
 }
 
-static int		launch_threads(const t_settings *settings, t_philosopher *philosopher)
+static int	launch_threads(const t_settings *s, t_philosopher *philosopher)
 {
-	int 			i;
-	int				ret_pthread;
-	t_philosopher	*tmp_philo;
-	
+	int				i;
+	int				ret;
+	t_philosopher	*tmp;
+
 	i = 0;
-	tmp_philo = philosopher;
-	while (i < settings->number)
+	tmp = philosopher;
+	while (i < s->number)
 	{
-		ret_pthread = pthread_create(&tmp_philo->tid, NULL, thread_start, (void *)tmp_philo);
-		if (ret_pthread != 0)
-			return (ft_error("Unable to create thread, see launch_thread function."));
+		ret = pthread_create(&tmp->tid, NULL, thread_start, (void *)tmp);
+		if (ret != 0)
+			return (ft_error("Unable to create thread."));
 		i++;
-		tmp_philo = tmp_philo->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }
 
-int     threading(t_settings *settings, t_philosopher *philosopher)
+int	threading(t_settings *settings, t_philosopher *philosopher)
 {
 	if (launch_threads(settings, philosopher) == -1)
 		return (-1);

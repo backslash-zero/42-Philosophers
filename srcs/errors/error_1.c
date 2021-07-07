@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   error_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:03:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 12:43:21 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:42:13 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-void     *ft_error_null(char *str)
+void	*ft_error_null(char *str)
 {
-    printf("\033[0;31mError:\033[0m %s\n", str);
-    return (NULL);
+	printf("\033[0;31mError:\033[0m %s\n", str);
+	return (NULL);
 }
 
-
-int     ft_error(char *str)
+int	ft_error(char *str)
 {
-    printf("\033[0;31mError:\033[0m %s\n", str);
-    return (-1);
+	printf("\033[0;31mError:\033[0m %s\n", str);
+	return (-1);
 }

@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_create_philosophers.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:50:17 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/06 12:44:32 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:34:14 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-
-t_philosopher		*create_philosophers(t_settings *settings)
+t_philosopher	*create_philosophers(t_settings *settings)
 {
-	t_philosopher   *first_philosopher;
-	t_philosopher   *philosopher;
-	t_philosopher   *last_philosopher;
+	t_philosopher	*first_philosopher;
+	t_philosopher	*philosopher;
+	t_philosopher	*last_philosopher;
 	int				i;
 
 	i = 0;
 	while (i < settings->number)
 	{
-		if (!(philosopher = malloc(sizeof(t_philosopher))))
+		philosopher = malloc(sizeof(t_philosopher));
+		if (!philosopher)
 			return ((t_philosopher *)ft_error_null("Malloc has failed"));
 		if (i != 0)
 			last_philosopher->next = philosopher;

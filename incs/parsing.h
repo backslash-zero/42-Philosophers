@@ -1,7 +1,7 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef	struct				s_settings
+typedef struct s_settings
 {
 	int						number;
 	pthread_t				tid_liveness_checker;
@@ -18,7 +18,7 @@ typedef	struct				s_settings
 	pthread_mutex_t			mutex_stdout;
 }							t_settings;
 
-typedef	struct	            s_philosopher
+typedef struct s_philosopher
 {
 	int						id;
 	pthread_t				tid;
@@ -31,7 +31,7 @@ typedef	struct	            s_philosopher
 	pthread_mutex_t			*fork_right;
 }							t_philosopher;
 
-int			 	get_forks(t_settings *settings);
+int				get_forks(t_settings *settings);
 
 t_philosopher	*create_philosophers(t_settings *settings);
 
@@ -41,7 +41,7 @@ int				get_time2eat(t_settings *settings, char **av);
 int				get_time2sleep(t_settings *settings, char **av);
 int				get_musteat(t_settings *settings, int ac, char **av);
 
-int         	parser(t_settings *settings, int ac, char **av);
+int				parser(t_settings *settings, int ac, char **av);
 
 int				check_numerical(char *str);
 

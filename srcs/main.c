@@ -6,13 +6,13 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 14:34:23 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:00:31 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philosophers.h"
 
-static void			assign_forks(t_settings *settings, t_philosopher *philosopher)
+static void	assign_forks(t_settings *settings, t_philosopher *philosopher)
 {
 	t_philosopher	*to_assign;
 
@@ -28,33 +28,27 @@ static void			assign_forks(t_settings *settings, t_philosopher *philosopher)
 	}
 }
 
-
-static int     init_struct(t_settings **settings, t_philosopher **philosopher, int ac, char **av)
+static int	init_struct(t_settings **s, t_philosopher **phil, int ac, char **av)
 {
-	*settings = malloc(sizeof(t_settings));
-	if (!*settings)
+	*s = malloc(sizeof(t_settings));
+	if (!*s)
 		return (-1);
-	if (parser(*settings, ac, av) == -1)
+	if (parser(*s, ac, av) == -1)
 		return (-1);
-	*philosopher = create_philosophers(*settings);
-	if (!*philosopher)
+	*phil = create_philosophers(*s);
+	if (!*phil)
 		return (ft_error("Problem creating philosophers :("));
-	assign_forks(*settings, *philosopher);
+	assign_forks(*s, *phil);
 	return (0);
 }
 
-// case with one philo
-
-// when everyone has eaten
-
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	static  t_settings *settings;
-	t_philosopher   *philosopher;
+	static t_settings	*settings;
+	t_philosopher		*philosopher;
 
 	if (init_struct(&settings, &philosopher, ac, av) == -1)
 		return (1);
-	// debug_print_settings(settings);
 	if (threading(settings, philosopher) == -1)
 		return (1);
 	free_all(settings, philosopher);

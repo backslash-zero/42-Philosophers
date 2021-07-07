@@ -6,13 +6,13 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 15:58:45 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/06/30 14:10:37 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:33:00 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
 
-int         get_number(t_settings *settings, char **av)
+int	get_number(t_settings *settings, char **av)
 {
 	if (check_numerical(av[1]) == -1)
 		return (-1);
@@ -22,7 +22,7 @@ int         get_number(t_settings *settings, char **av)
 	return (0);
 }
 
-int         get_time2die(t_settings *settings, char **av)
+int	get_time2die(t_settings *settings, char **av)
 {
 	if (check_numerical(av[2]) == -1)
 		return (-1);
@@ -30,14 +30,15 @@ int         get_time2die(t_settings *settings, char **av)
 	return (0);
 }
 
-int         get_time2eat(t_settings *settings, char **av)
+int	get_time2eat(t_settings *settings, char **av)
 {
 	if (check_numerical(av[3]) == -1)
 		return (-1);
 	settings->time2eat = ft_atoi(av[3]);
 	return (0);
 }
-int         get_time2sleep(t_settings *settings, char **av)
+
+int	get_time2sleep(t_settings *settings, char **av)
 {
 	if (check_numerical(av[4]) == -1)
 		return (-1);
@@ -45,7 +46,7 @@ int         get_time2sleep(t_settings *settings, char **av)
 	return (0);
 }
 
-int         get_musteat(t_settings *settings, int ac, char **av)
+int	get_musteat(t_settings *settings, int ac, char **av)
 {
 	if (ac == 5)
 	{
