@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 13:45:34 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:07:19 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void	pickup_forks(t_philosopher *philosopher)
 {
 	pthread_mutex_lock(philosopher->fork_left);
 	pthread_mutex_lock(philosopher->fork_right);
-}
-
-void	philosopher_dies(t_philosopher *philosopher)
-{
-	long	timestamp;
-	if (philosopher->settings->everyone_alive != 0)
-	{
-		philosopher->settings->everyone_alive = 0;
-		timestamp = get_time();
-		printtime(timestamp, philosopher->id, "died", philosopher->settings);
-	}
 }
 
 void	philosopher_update_lastmeal(t_philosopher *philosopher, double timestamp)

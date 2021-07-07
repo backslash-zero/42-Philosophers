@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 13:48:27 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:36:45 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int         philosophing_conditions(t_philosopher *philosopher)
     pthread_mutex_lock(&philosopher->settings->mutex_alive);
     if (philosopher->settings->everyone_alive == 0)
     {
-        printf("Philo-%d every1 alive failed!\n", philosopher->id);
+        // printf("Philo-%d every1 alive failed!\n", philosopher->id);
         pthread_mutex_unlock(&philosopher->settings->mutex_alive);
         return (0);
     }
@@ -25,7 +25,7 @@ int         philosophing_conditions(t_philosopher *philosopher)
     pthread_mutex_lock(&philosopher->settings->mutex_musteat);
     if (philosopher->settings->musteat_max == 1)
     {
-        printf("Philo-%d musteat failed!: ate %d times\n", philosopher->id, philosopher->meals);
+        // printf("Philo-%d musteat failed!: ate %d times\n", philosopher->id, philosopher->meals);
         pthread_mutex_unlock(&philosopher->settings->mutex_musteat);
         return (0);
     }
@@ -33,11 +33,22 @@ int         philosophing_conditions(t_philosopher *philosopher)
     return (1);
 }
 
+static  void    unique_philo(t_philosopher *philosopher)
+{
+    if (philosopher->settings->number == 1)
+    {
+       my_wait(philosopher->settings->time2die);
+       philosopher->settings->everyone_alive = 0;
+    }
+    
+}
+
 void        philosophing(t_philosopher *philosopher)
 {
     philosopher->lastmeal = get_time();
     if (is_even(philosopher->id))
         usleep(300);
+    unique_philo(philosopher);
     while (philosophing_conditions(philosopher))
     {
         philosopher_eat(philosopher);

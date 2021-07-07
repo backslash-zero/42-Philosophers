@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/07 13:50:35 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:07:09 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void     check_death(t_philosopher *philosopher)
 		if (check_starve(tmp) == 1)
 		{
 			philosopher->settings->everyone_alive = 0;
-			printtime(get_time(), philosopher->id, "died", philosopher->settings);
+			printtime(get_time(), tmp->id, "died", philosopher->settings);
+			break;
 		}
 		tmp = tmp->next;
 	}

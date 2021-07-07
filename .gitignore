@@ -2,3 +2,4 @@ philosopher
 *.o
 *.jpg
 *.png
+output.txt

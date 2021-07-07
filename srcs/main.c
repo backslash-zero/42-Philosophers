@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 11:54:23 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:34:23 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void			assign_forks(t_settings *settings, t_philosopher *philosopher)
 	while (to_assign)
 	{
 		to_assign->fork_left = &settings->forks[to_assign->id - 1];
-		if (to_assign->id != 1)
+		if (to_assign->id != 1 && settings->number != 1)
 			to_assign->fork_right = &settings->forks[to_assign->id - 2];
 		else
 			to_assign->fork_right = &settings->forks[settings->number - 1];
@@ -54,7 +54,7 @@ int     main(int ac, char **av)
 
 	if (init_struct(&settings, &philosopher, ac, av) == -1)
 		return (1);
-	debug_print_settings(settings);
+	// debug_print_settings(settings);
 	if (threading(settings, philosopher) == -1)
 		return (1);
 	free_all(settings, philosopher);
