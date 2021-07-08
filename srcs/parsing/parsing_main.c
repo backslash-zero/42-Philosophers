@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:47 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 20:38:03 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/08 16:40:27 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static	int	get_philo(t_settings *settings, int ac, char **av)
 		return (ft_error("arg \"time_to_sleep\" invalid"));
 	if (get_musteat(settings, ac, av) == -1)
 		return (ft_error("Optional arg invalid"));
+	if (get_original_time(settings) == -1)
+		return (-1);
 	settings->everyone_alive = 1;
 	settings->musteat_max = 0;
 	return (0);

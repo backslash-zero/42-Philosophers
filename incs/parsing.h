@@ -16,6 +16,7 @@ typedef struct s_settings
 	pthread_mutex_t			mutex_musteat;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			mutex_stdout;
+	long					original_time;
 }							t_settings;
 
 typedef struct s_philosopher

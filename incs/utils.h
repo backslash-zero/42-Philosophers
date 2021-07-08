@@ -8,8 +8,9 @@ void	destroy_mutexes(t_settings *settings);
 void	destroy_fork_mutexes(t_settings *settings, int n);
 
 void	printtime(long time, int index, char *msg, t_settings *settings);
-void	my_wait(long time);
-long	get_time(void);
+void	my_wait(long time, t_settings *settings);
+long	get_time(t_settings *settings);
+int     get_original_time(t_settings *settings);
 
 int		ft_atoi(const char *str);
 int		is_even(const int nb);

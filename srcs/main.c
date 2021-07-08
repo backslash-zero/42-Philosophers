@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 20:27:13 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/08 16:55:53 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int ac, char **av)
 		return (1);
 		free_all(settings, philosopher);
 	}
+	usleep(300);
 	free_all(settings, philosopher);
 	return (0);
 }
