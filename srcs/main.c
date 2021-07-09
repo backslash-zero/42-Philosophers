@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:39 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/08 16:55:53 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:11:56 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ static int	init_struct(t_settings **s, t_philosopher **phil, int ac, char **av)
 	assign_forks(*s, *phil);
 	return (0);
 }
+
+// todo;
+// mutex for settings->everyone_alive and remove in oter place
+// - norme
+// - check threads // on virtualbox
 
 int	main(int ac, char **av)
 {

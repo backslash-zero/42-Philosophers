@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/08 17:30:13 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:15:04 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static void	unique_philo(t_philosopher *philo)
 		printtime(get_time(philo->settings), philo->id, "has taken a fork", philo->settings);
 		my_wait(philo->settings->time2die, philo->settings);
 		usleep(300);
+		pthread_mutex_lock(&philo->settings->mutex_alive);
 		philo->settings->everyone_alive = 0;
+		pthread_mutex_unlock(&philo->settings->mutex_alive);
 	}
 }
 
