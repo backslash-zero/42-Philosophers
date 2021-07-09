@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 18:23:38 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/08 15:54:19 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:21:52 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ void	drop_forks(t_philosopher *philosopher)
 void	pickup_forks(t_philosopher *philo)
 {
 	pthread_mutex_lock(philo->fork_left);
-	printtime(get_time(philo->settings), philo->id, "has taken a fork", philo->settings);
+	printtime(get_time(philo->settings),
+		philo->id,
+		"has taken a fork",
+		philo->settings);
 	pthread_mutex_lock(philo->fork_right);
-	printtime(get_time(philo->settings), philo->id, "has taken a fork", philo->settings);
+	printtime(get_time(philo->settings),
+		philo->id,
+		"has taken a fork",
+		philo->settings);
 }

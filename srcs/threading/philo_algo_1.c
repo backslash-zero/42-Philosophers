@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:23:16 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/09 14:15:04 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:21:22 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ static void	unique_philo(t_philosopher *philo)
 {
 	if (philo->settings->number == 1)
 	{
-		printtime(get_time(philo->settings), philo->id, "has taken a fork", philo->settings);
+		printtime(get_time(philo->settings),
+			philo->id, "has taken a fork",
+			philo->settings);
 		my_wait(philo->settings->time2die, philo->settings);
 		usleep(300);
 		pthread_mutex_lock(&philo->settings->mutex_alive);

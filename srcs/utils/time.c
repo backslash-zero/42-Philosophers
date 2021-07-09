@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:14:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/09 14:14:47 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:23:56 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	printtime(long time, int index, char *msg, t_settings *settings)
 		printf("%ldms\t%d %s\n", time, index, msg);
 	pthread_mutex_unlock(&settings->mutex_stdout);
 	pthread_mutex_unlock(&settings->mutex_alive);
-
 }
 
 static long	convert_time(long value, const char *type)
@@ -41,7 +40,7 @@ int	get_original_time(t_settings *settings)
 	if (ret_gettime != 0)
 		return (ft_error("Overflow: gettimeofday() returned nonzero."));
 	settings->original_time = convert_time(original_time.tv_sec, "seconds")
-							+ convert_time(original_time.tv_usec, "microseconds");
+		+ convert_time(original_time.tv_usec, "microseconds");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/09 14:17:51 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:23:36 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static int	check_musteat(t_philosopher *philosopher)
 static int	check_starve(t_philosopher *philo)
 {
 	pthread_mutex_lock(&philo->mutex_lastmeal);
-	if ((long)get_time(philo->settings) - philo->lastmeal >= (long)philo->settings->time2die)
+	if (get_time(philo->settings) - philo->lastmeal
+		>= (long)philo->settings->time2die)
 	{
 		pthread_mutex_unlock(&philo->mutex_lastmeal);
 		return (1);
@@ -50,7 +51,10 @@ static void	check_death(t_philosopher *philosopher)
 	{
 		if (check_starve(tmp) == 1)
 		{
-			printtime(get_time(philosopher->settings), tmp->id, "died", philosopher->settings);
+			printtime(get_time(philosopher->settings),
+				tmp->id,
+				"died",
+				philosopher->settings);
 			usleep(1000);
 			pthread_mutex_lock(&philosopher->settings->mutex_alive);
 			philosopher->settings->everyone_alive = 0;

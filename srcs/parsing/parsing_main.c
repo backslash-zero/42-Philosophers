@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 18:22:47 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/08 16:40:27 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/09 14:20:31 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	init_othermutexes(t_settings *settings)
 static	int	get_philo(t_settings *settings, int ac, char **av)
 {
 	if (get_number(settings, av) == -1)
-		return (ft_error("arg \"number_of_philosophers\" invalid"));	
+		return (ft_error("arg \"number_of_philosophers\" invalid"));
 	if (get_time2die(settings, av) == -1)
 		return (ft_error("arg \"time_to_die\" invalid"));
 	if (get_time2eat(settings, av) == -1)
