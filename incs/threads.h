@@ -4,6 +4,7 @@
 # include "parsing.h"
 
 void	philosopher_dies(t_philosopher *philosopher);
+void	philosopher_update_lastmeal(t_philosopher *philo, double timestamp);
 void	philosopher_eat(t_philosopher *philosopher);
 void	philosopher_sleep(t_philosopher *philosopher);
 void	philosopher_think(t_philosopher *philosopher);

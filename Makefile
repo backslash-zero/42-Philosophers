@@ -6,7 +6,7 @@
 #    By: celestin <celestin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 18:08:47 by cmeunier          #+#    #+#              #
-#    Updated: 2021/07/18 13:50:21 by celestin         ###   ########.fr        #
+#    Updated: 2021/07/18 14:12:08 by celestin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC_NAME	=		main.c									\
 					threading/threads.c						\
 					utils/free_1.c							\
 					utils/free_2.c							\
+					utils/print.c							\
 					utils/time.c							\
 					utils/utils_1.c							\
 
