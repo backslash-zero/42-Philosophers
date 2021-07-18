@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_actions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/18 14:08:40 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:01:19 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	philosopher_eat(t_philosopher *philo)
 
 void	philosopher_sleep(t_philosopher *philo)
 {
-
 	if (philosophing_conditions(philo))
 	{
 		printtime(philo->id, "is sleeping", philo->settings);

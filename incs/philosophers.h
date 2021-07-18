@@ -7,6 +7,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # include "error.h"
 # include "parsing.h"

@@ -6,7 +6,7 @@
 /*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 14:37:04 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/07 20:39:03 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:11:05 by cmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int	ft_atoi(const char *str)
+static long	ft_atoi_long(const char *str)
 {
-	int	value;
-	int	isneg;
+	long	value;
+	int		isneg;
 
 	value = 0;
 	isneg = 0;
@@ -67,4 +67,14 @@ int	ft_atoi(const char *str)
 		return (value);
 	else
 		return (-value);
+}
+
+int	ft_conv_num(const char *str)
+{
+	long	ret;
+
+	ret = ft_atoi_long(str);
+	if (ret > (long)INT_MAX)
+		return (-1);
+	return ((int)ret);
 }
