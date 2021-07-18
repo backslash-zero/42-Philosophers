@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_actions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 11:51:15 by cmeunier          #+#    #+#             */
-/*   Updated: 2021/07/08 17:48:36 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/18 14:08:40 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@ void	philosopher_update_lastmeal(t_philosopher *philo, double timestamp)
 
 void	philosopher_eat(t_philosopher *philo)
 {
-	long	time;
-
 	pickup_forks(philo);
-	time = get_time(philo->settings);
-	philosopher_update_lastmeal(philo, time);
 	if (philosophing_conditions(philo))
 	{
-		printtime(time, philo->id, "is eating", philo->settings);
+		print_eating(philo);
 		my_wait(philo->settings->time2eat, philo->settings);
 		drop_forks(philo);
 		philo->meals += 1;
@@ -39,21 +35,16 @@ void	philosopher_eat(t_philosopher *philo)
 
 void	philosopher_sleep(t_philosopher *philo)
 {
-	long	timestamp;
 
-	timestamp = get_time(philo->settings);
 	if (philosophing_conditions(philo))
 	{
-		printtime(timestamp, philo->id, "is sleeping", philo->settings);
+		printtime(philo->id, "is sleeping", philo->settings);
 		my_wait(philo->settings->time2sleep, philo->settings);
 	}
 }
 
 void	philosopher_think(t_philosopher *philo)
 {
-	long	timestamp;
-
-	timestamp = get_time(philo->settings);
 	if (philosophing_conditions(philo))
-		printtime(timestamp, philo->id, "is thinking", philo->settings);
+		printtime(philo->id, "is thinking", philo->settings);
 }

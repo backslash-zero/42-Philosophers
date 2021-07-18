@@ -6,7 +6,7 @@
 /*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:41:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/11 00:49:41 by celestin         ###   ########.fr       */
+/*   Updated: 2021/07/18 14:06:08 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ static void	check_death(t_philosopher *philosopher)
 	{
 		if (check_starve(tmp) == 1)
 		{
-			printtime(get_time(philosopher->settings),
-				tmp->id,
+			printtime(tmp->id,
 				"died",
 				philosopher->settings);
 			pthread_mutex_lock(&philosopher->settings->mutex_alive);

@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmeunier <cmeunier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celestin <celestin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:14:34 by celestin          #+#    #+#             */
-/*   Updated: 2021/07/09 14:23:56 by cmeunier         ###   ########.fr       */
+/*   Updated: 2021/07/18 13:52:38 by celestin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/philosophers.h"
-
-void	printtime(long time, int index, char *msg, t_settings *settings)
-{
-	pthread_mutex_lock(&settings->mutex_stdout);
-	pthread_mutex_lock(&settings->mutex_alive);
-	if (settings->everyone_alive)
-		printf("%ldms\t%d %s\n", time, index, msg);
-	pthread_mutex_unlock(&settings->mutex_stdout);
-	pthread_mutex_unlock(&settings->mutex_alive);
-}
 
 static long	convert_time(long value, const char *type)
 {
